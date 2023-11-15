@@ -1,8 +1,5 @@
 add_library(algebra prime_field_element.cc big_int.h big_int.inl)
 target_link_libraries(algebra PUBLIC Boost::multiprecision)
-# find_package(Boost REQUIRED COMPONENTS multiprecision)
-
-message("keke: ${BOOST_SUPERPROJECT_VERSION}")
 
 add_executable(big_int_test big_int_test.cc)
 target_link_libraries(big_int_test gtest gtest_main gmock pthread Boost::multiprecision)
