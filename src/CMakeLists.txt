@@ -1,1 +1,2 @@
+add_subdirectory(third_party/boost)
 add_subdirectory(starkware)
