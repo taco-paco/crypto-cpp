@@ -16,15 +16,28 @@ include(CTest)
 enable_testing()
 include_directories("${CMAKE_SOURCE_DIR}/src")
 
+
+FetchContent_Declare(
+  boost
+  GIT_REPOSITORY https://github.com/boostorg/boost.git
+  GIT_TAG        boost-1.82.0
+  GIT_PROGRESS 1
+)
+FetchContent_MakeAvailable(boost)
+
+#include(${CMAKE_CURRENT_SOURCE_DIR}/conanbuildinfo.cmake)
+#conan_basic_setup()
+#message(STATUS "conanlibs: ${CONAN_LIBS}")
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-if(WIN32)
-  # Windows-specific flags for MSVC
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17 /WX /W3")
-else()
-  # Unix-like flags (GCC/Clang)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -Werror -Wall -Wextra -fno-strict-aliasing -fPIC")
-endif()
+# if(WIN32)
+#   # Windows-specific flags for MSVC
+#   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17 /WX /W3")
+# else()
+#   # Unix-like flags (GCC/Clang)
+#   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -Werror -Wall -Wextra -fno-strict-aliasing -fPIC")
+# endif()
 
 
 set(CC_OPTIMIZE "-O3")
@@ -32,4 +45,5 @@ set(CC_OPTIMIZE "-O3")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${CC_OPTIMIZE}")
 
+# add_subdirectory(boost)
 add_subdirectory(src)

@@ -1,17 +1,21 @@
-add_library(algebra prime_field_element.cc)
+add_library(algebra prime_field_element.cc big_int.h big_int.inl)
+target_link_libraries(algebra PUBLIC Boost::multiprecision)
+# find_package(Boost REQUIRED COMPONENTS multiprecision)
+
+message("keke: ${BOOST_SUPERPROJECT_VERSION}")
 
 add_executable(big_int_test big_int_test.cc)
-target_link_libraries(big_int_test gtest gtest_main gmock pthread)
+target_link_libraries(big_int_test gtest gtest_main gmock pthread Boost::multiprecision)
 add_test(big_int_test big_int_test)
 
 add_executable(prime_field_element_test prime_field_element_test.cc)
-target_link_libraries(prime_field_element_test algebra gtest gtest_main pthread)
+target_link_libraries(prime_field_element_test algebra gtest gtest_main pthread Boost::multiprecision)
 add_test(prime_field_element_test prime_field_element_test)
 
 add_executable(fraction_field_element_test fraction_field_element_test.cc)
-target_link_libraries(fraction_field_element_test algebra gtest gtest_main gmock pthread)
+target_link_libraries(fraction_field_element_test algebra gtest gtest_main gmock pthread Boost::multiprecision)
 add_test(fraction_field_element_test fraction_field_element_test)
 
 add_executable(elliptic_curve_test elliptic_curve_test.cc)
-target_link_libraries(elliptic_curve_test algebra gtest gtest_main gmock pthread)
+target_link_libraries(elliptic_curve_test algebra gtest gtest_main gmock pthread Boost::multiprecision)
 add_test(elliptic_curve_test elliptic_curve_test)
