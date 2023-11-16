@@ -213,7 +213,7 @@ constexpr size_t BigInt<N>::NumLeadingZeros() const {
   }
 
   if (i >= 0) {
-    res += __builtin_clzll(gsl::at(value_, i));
+    res += LeadingZeros(gsl::at(value_, i));
   }
 
   return res;
