@@ -1,4 +1,4 @@
-if(NOT WIN_32)
+if(NOT ${WIN_32})
     list(APPEND OPTIONAL_LIBS pthread)
 endif()
 

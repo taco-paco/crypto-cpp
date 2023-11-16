@@ -2,7 +2,7 @@ if(${need_boost})
     set(OPTIONAL_LIBS Boost::multiprecision)
 endif()
 
-if(NOT WIN_32)
+if(NOT ${WIN_32})
     list(APPEND OPTIONAL_LIBS pthread)
 endif()
 
