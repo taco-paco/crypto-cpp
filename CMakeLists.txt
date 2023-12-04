@@ -14,7 +14,6 @@ FetchContent_MakeAvailable(googletest)
 
 include(CTest)
 enable_testing()
-include_directories("${CMAKE_SOURCE_DIR}/src")
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -22,4 +21,5 @@ set(CC_OPTIMIZE "-O3")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${CC_OPTIMIZE}")
 
-add_subdirectory(src)
+add_subdirectory(third_party)
+add_subdirectory(libs)
