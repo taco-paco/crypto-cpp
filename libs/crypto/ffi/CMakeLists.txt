@@ -8,7 +8,29 @@ add_library(crypto_c_exports
 )
 
 target_link_libraries(crypto_c_exports PUBLIC gsl algebra PRIVATE crypto)
-target_include_directories(crypto_c_exports PUBLIC include)
+target_include_directories(crypto_c_exports
+    PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/crypto/ffi/include>
+)
+
+install(TARGETS
+        crypto_c_exports
+        EXPORT crypto_c_exports_config
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
+
+install(EXPORT crypto_c_exports_config
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/starkware-${PROJECT_VERSION}
+        NAMESPACE Starkware::
+)
+
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        FILES_MATCHING PATTERN *.h *.inl
+)
 
 add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/crypto_lib/crypto_lib.go
