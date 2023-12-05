@@ -2,7 +2,7 @@ add_library(starkex src/order.cc)
 
 target_include_directories(starkex
     PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/starkex/include>
 )
 target_link_libraries(starkex PUBLIC algebra PRIVATE crypto)
@@ -22,9 +22,11 @@ install(EXPORT starkex_config
         NAMESPACE Starkware::
 )
 
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/starkex
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-        FILES_MATCHING PATTERN *.h *.inl
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/starkex
+        FILES_MATCHING
+        PATTERN *.h
+        PATTERN *.inl
 )
 
 add_subdirectory(test)

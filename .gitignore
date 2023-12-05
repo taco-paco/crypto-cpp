@@ -1,7 +1,12 @@
+# CMake artifact dirs
 build
-/.vscode/
+install
+# clion ones
+cmake-build-debug
+cmake-install-debug
+.idea
+
+.vscode
 node_modules
 *.so
 package-lock.json
-cmake-build-debug
-.idea

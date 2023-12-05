@@ -27,9 +27,11 @@ install(EXPORT crypto_c_exports_config
         NAMESPACE Starkware::
 )
 
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-        FILES_MATCHING PATTERN *.h *.inl
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/crypto/ffi
+        FILES_MATCHING
+        PATTERN *.h
+        PATTERN *.inl
 )
 
 add_custom_command(

@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 3.5)
-project(StarkwareCryptoLib VERSION 0.1.0 LANGUAGES CXX)
+project(StarkwareCryptoLib VERSION 0.2.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -32,3 +32,8 @@ find_package(BoostMultiprecision REQUIRED)
 
 add_subdirectory(third_party)
 add_subdirectory(libs)
+
+configure_file("starkware-config.cmake.in" "starkware-config.cmake" @ONLY)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/starkware-config.cmake
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/starkware-${PROJECT_VERSION}
+)

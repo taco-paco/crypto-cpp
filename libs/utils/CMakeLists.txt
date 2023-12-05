@@ -1,7 +1,7 @@
 add_library(utils INTERFACE)
 target_include_directories(utils
     INTERFACE
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}i/nclude>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/utils/include>
 )
 
@@ -20,9 +20,11 @@ install(EXPORT utils_config
         NAMESPACE Starkware::
 )
 
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/utils
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-        FILES_MATCHING PATTERN *.h *.inl
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/utils
+        FILES_MATCHING
+        PATTERN *.h
+        PATTERN *.inl
 )
 
 add_subdirectory(test)
