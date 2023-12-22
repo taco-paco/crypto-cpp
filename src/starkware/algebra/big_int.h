@@ -91,7 +91,7 @@ class BigInt {
     Returns the representation of the number as a string of the form "0x...".
   */
   std::string ToString() const;
-
+  std::string ToStringDec() const;
   std::vector<bool> ToBoolVector() const;
 
   /*
