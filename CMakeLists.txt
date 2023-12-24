@@ -18,17 +18,7 @@ include_directories("${CMAKE_SOURCE_DIR}/src")
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-if(WIN32)
-  # Windows-specific flags for MSVC
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17 /WX /W3")
-else()
-  # Unix-like flags (GCC/Clang)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -Werror -Wall -Wextra -fno-strict-aliasing -fPIC")
-endif()
-
-
 set(CC_OPTIMIZE "-O3")
-
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${CC_OPTIMIZE}")
 
